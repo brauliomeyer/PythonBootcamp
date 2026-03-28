@@ -71,6 +71,10 @@ export default function App() {
     updateTodos(todos.filter((todo) => todo.id !== id));
   }
 
+
+  function removeCompletedTodos() {
+    updateTodos(todos.filter((todo) => !todo.completed));
+  }
   function startEdit(todo) {
     setEditingId(todo.id);
     setEditingText(todo.text);
@@ -145,6 +149,16 @@ export default function App() {
               {item.label}
             </button>
           ))}
+        </div>
+
+        <div className="mb-4 flex justify-end">
+          <button
+            type="button"
+            onClick={removeCompletedTodos}
+            className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs text-slate-600 transition hover:bg-slate-100"
+          >
+            Delete Completed
+          </button>
         </div>
 
         <ul className="space-y-2">
