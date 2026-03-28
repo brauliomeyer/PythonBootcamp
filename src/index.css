@@ -107,3 +107,8 @@ body {
     box-shadow: 5px 5px 0 0 var(--gumroad-black) !important;
   }
 }
+
+/* Override page background to requested Gumroad pink variable */
+body {
+  background: var(--gumroad-pink) !important;
+}
