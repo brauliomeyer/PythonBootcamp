@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply m-0 min-h-screen font-sans text-slate-800;
+}
+
+/* Gumroad-inspired palette + treatment */
+:root {
+  --gumroad-pink: #ff90e8;
+  --gumroad-yellow: #ffc900;
+  --gumroad-purple: #6e1fce;
+  --gumroad-black: #1a1a1a;
+  --gumroad-cream: #fffdf6;
+}
+
+body {
+  background: linear-gradient(180deg, #ffe6f8 0%, #fff9de 100%);
+}
+
+#root > div > main {
+  background-color: var(--gumroad-cream) !important;
+  border: 2px solid var(--gumroad-black);
+  box-shadow: 8px 8px 0 0 var(--gumroad-black) !important;
+}
+
+#root h1 {
+  color: var(--gumroad-black) !important;
+}
+
+#root header p {
+  color: #4a4a4a !important;
+}
+
+#root form input {
+  border: 2px solid var(--gumroad-black) !important;
+  background-color: #ffffff;
+}
+
+#root form button[type='submit'] {
+  background-color: var(--gumroad-purple) !important;
+  border: 2px solid var(--gumroad-black);
+  box-shadow: 3px 3px 0 0 var(--gumroad-black);
+  color: #ffffff !important;
+}
+
+#root form button[type='submit']:hover {
+  filter: brightness(1.05);
+}
+
+#root .mb-4.flex.flex-wrap.gap-2 button {
+  border: 2px solid var(--gumroad-black);
+  box-shadow: 2px 2px 0 0 var(--gumroad-black);
+  font-weight: 600;
+}
+
+#root .mb-4.flex.flex-wrap.gap-2 button.bg-slate-900 {
+  background-color: var(--gumroad-pink) !important;
+  color: var(--gumroad-black) !important;
+}
+
+#root .mb-4.flex.flex-wrap.gap-2 button.bg-slate-100 {
+  background-color: #ffffff !important;
+  color: var(--gumroad-black) !important;
+}
+
+#root .mb-4.flex.justify-end button {
+  border: 2px solid var(--gumroad-black) !important;
+  background-color: var(--gumroad-yellow);
+  box-shadow: 2px 2px 0 0 var(--gumroad-black);
+  color: var(--gumroad-black) !important;
+  font-weight: 700;
+}
+
+#root ul li {
+  border: 2px solid var(--gumroad-black) !important;
+  box-shadow: 3px 3px 0 0 var(--gumroad-black);
+  background-color: #ffffff !important;
+}
+
+#root ul li button[aria-label^='Delete'] {
+  border: 2px solid var(--gumroad-black);
+  background-color: #fff;
+  color: #a10000 !important;
+  font-weight: 700;
+}
+
+#root ul li button[aria-label^='Delete']:hover {
+  background-color: #ffe8e8 !important;
+}
+
+#root input[type='checkbox'] {
+  accent-color: var(--gumroad-purple);
+}
+
+#root .text-slate-400.line-through {
+  color: #6e6e6e !important;
+}
+
+@media (max-width: 640px) {
+  #root > div > main {
+    box-shadow: 5px 5px 0 0 var(--gumroad-black) !important;
+  }
+}
+
+/* Override page background to requested Gumroad pink variable */
+body {
+  background: var(--gumroad-pink) !important;
+}
