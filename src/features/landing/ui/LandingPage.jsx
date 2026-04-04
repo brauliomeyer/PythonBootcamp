@@ -1,79 +1,10 @@
-const navItems = [
-  { label: 'Features', href: '#features' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Footer', href: '#footer' },
-];
+import { featureCards } from '../data/features';
+import { navigationItems } from '../data/navigation';
+import { pricingTiers } from '../data/pricing';
+import { scrollToSection } from '../../../shared/lib/dom';
+import { SvgIcon } from './SvgIcon';
 
-const features = [
-  {
-    title: 'Polished in One Click',
-    description:
-      'Turn plain snippets into share-ready screenshots with gradient backdrops, spacing presets, and tasteful shadows.',
-    icon: (
-      <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <rect x="3" y="4" width="18" height="14" rx="2" />
-        <path d="M8 20h8" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Built for Developer Workflows',
-    description:
-      'Paste code, pick your language theme, and export crisp images for docs, changelogs, portfolios, or social posts.',
-    icon: (
-      <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <path d="m8 8-4 4 4 4" />
-        <path d="m16 8 4 4-4 4" />
-        <path d="m14 4-4 16" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Fast Team Sharing',
-    description:
-      'Save brand presets, standardize screenshots across teams, and keep every engineering update visually consistent.',
-    icon: (
-      <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <path d="M16 3h5v5" />
-        <path d="m9 14 12-12" />
-        <path d="M21 14v5h-5" />
-        <path d="m3 10 12 12" />
-      </svg>
-    ),
-  },
-];
-
-const pricingTiers = [
-  {
-    name: 'Free',
-    price: '$0',
-    blurb: 'Great for personal projects and quick social snippets.',
-    features: ['5 exports / day', '3 code themes', 'PNG download'],
-    cta: 'Get Started',
-  },
-  {
-    name: 'Pro',
-    price: '$12/mo',
-    blurb: 'Best for indie hackers and content-focused developers.',
-    features: ['Unlimited exports', 'Premium themes', 'Brand presets + watermark control'],
-    cta: 'Start Pro Trial',
-    highlight: true,
-  },
-  {
-    name: 'Corporation',
-    price: 'Custom',
-    blurb: 'For engineering teams that need governance and scale.',
-    features: ['Team workspaces', 'SSO + audit logs', 'Priority support + onboarding'],
-    cta: 'Contact Sales',
-  },
-];
-
-function scrollToSection(id) {
-  const section = document.querySelector(id);
-  if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-export default function App() {
+export function LandingPage() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <header className="sticky top-0 z-20 border-b border-slate-800/70 bg-slate-950/85 backdrop-blur">
@@ -86,7 +17,7 @@ export default function App() {
             CodeSnap
           </button>
           <nav className="hidden items-center gap-6 text-sm text-slate-300 sm:flex">
-            {navItems.map((item) => (
+            {navigationItems.map((item) => (
               <button
                 key={item.href}
                 type="button"
@@ -163,10 +94,10 @@ export default function App() {
             <p className="mt-3 text-slate-300">Designed for developers who want faster sharing without compromising visual quality.</p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
-            {features.map((feature) => (
+            {featureCards.map((feature) => (
               <article key={feature.title} className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
                 <div className="mb-4 inline-flex rounded-lg bg-gradient-to-br from-blue-500/20 to-violet-500/20 p-3 text-violet-200">
-                  {feature.icon}
+                  <SvgIcon iconPaths={feature.iconPaths} />
                 </div>
                 <h3 className="text-lg font-semibold text-white">{feature.title}</h3>
                 <p className="mt-2 text-sm text-slate-300">{feature.description}</p>
@@ -214,17 +145,28 @@ export default function App() {
         </section>
       </main>
 
-      <footer id="footer" className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-10 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+      <footer
+        id="footer"
+        className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-10 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8"
+      >
         <p>© {new Date().getFullYear()} CodeSnap. Built for developers.</p>
         <div className="flex flex-wrap gap-4">
-          <button type="button" onClick={() => scrollToSection('#features')} className="transition hover:text-white">
-            Features
+          <button
+            type="button"
+            onClick={() => scrollToSection('#features')}
+            className="transition hover:text-white"
+          >
+            Product
           </button>
-          <button type="button" onClick={() => scrollToSection('#pricing')} className="transition hover:text-white">
+          <button
+            type="button"
+            onClick={() => scrollToSection('#pricing')}
+            className="transition hover:text-white"
+          >
             Pricing
           </button>
           <button type="button" onClick={() => scrollToSection('#top')} className="transition hover:text-white">
-            Back to top
+            Back to Top
           </button>
         </div>
       </footer>
