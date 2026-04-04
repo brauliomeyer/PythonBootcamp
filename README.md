@@ -8,13 +8,16 @@ A Vite + React landing page demo for the CodeSnap concept.
 - `npm run build` – create production build.
 - `npm run preview` – preview production build locally.
 
-## Feature-based structure
+## Production-style architecture
 
-This project now uses a feature-first folder layout with explicit boundaries:
+The codebase follows a feature-first, boundary-driven structure:
 
-- `src/app/` → app shell/composition layer.
-- `src/features/landing/data/` → landing-page domain data.
-- `src/features/landing/ui/` → landing-page UI components.
-- `src/shared/lib/` → cross-feature utilities.
+- `src/app/` → application composition/root wiring.
+- `src/features/<feature>/` → isolated feature modules.
+  - `data/` → framework-agnostic domain/config content.
+  - `ui/components/` → reusable feature-local components.
+  - `ui/sections/` → route/page sections.
+  - `ui/<FeaturePage>.jsx` → feature public UI entrypoint.
+- `src/shared/` → cross-feature utilities and generic UI primitives.
 
-The app entrypoint (`src/main.jsx`) can import from `app`, while features consume only their own `data/ui` plus `shared` utilities.
+This keeps the app scalable by avoiding global "components/", "utils/", or type-based folder sprawl.
